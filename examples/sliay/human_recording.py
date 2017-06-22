@@ -33,8 +33,8 @@ game.set_doom_map(args.map)  # Limited deathmatch.
 # game.set_doom_map("map02")  # Full deathmatch.
 
 game.add_game_args("-host 1 -deathmatch +sv_spawnfarthest 1 "
-                   "+timelimit 5.0 +sv_forcerespawn 1 +sv_noautoaim 1 +sv_respawnprotect 1 +sv_nocrouch 1 "
-                   "+viz_respawn_delay 10 +viz_nocheat 1 ")
+                   "+timelimit 10.0 +sv_forcerespawn 1 +sv_noautoaim 1 +sv_respawnprotect 1 +sv_nocrouch 1 "
+                   "+viz_respawn_delay 2 +viz_nocheat 1 ")
 if args.ip is not None:
     game.add_game_args("-join " + args.ip + " ")
 
@@ -101,9 +101,9 @@ while not game.is_episode_finished():
     action = game.get_last_action()
     for i in range(len(action)):
         if i != len(action)-1:
-            f_action.write('%d ' % action[i])
+            f_action.write('%f ' % action[i])
         else:
-            f_action.write('%d\n' % action[i])
+            f_action.write('%f\n' % action[i])
 
 print("Episode finished.")
 print("************************")
